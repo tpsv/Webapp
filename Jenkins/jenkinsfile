@@ -1,0 +1,31 @@
+pipeline 
+{
+    agent none 
+
+    stages{
+        stage("build")
+        {
+            steps{
+                echo("This is the build process")
+            }
+            
+        }
+
+   
+        stage("test")
+        {
+            steps{
+                echo("This is the test process")
+            }
+            
+        }
+  
+        stage("deploy")
+        {
+            steps{
+                echo("This is the deploy process")
+            }
+            
+        }
+    }
+}
