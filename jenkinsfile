@@ -1,21 +1,18 @@
-pipeline 
-{
-    agent none 
+pipeline {
+    agent none
 
-    stages{
-        stage("build")
-        {
-            steps{
+    stages {
+        stage("build") {
+            agent any // Ensure a node is allocated for this stage
+            steps {
                 sh 'mvn clean package'
             }
-            
         }
+    }
 
-   
-        post {
-            sucess {
-                archiveArtifacts artifacts : '**/target/*.war'
-            }
+    post {
+        success {
+            archiveArtifacts artifacts: '**/target/*.war'
         }
     }
 }
