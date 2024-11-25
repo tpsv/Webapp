@@ -6,26 +6,16 @@ pipeline
         stage("build")
         {
             steps{
-                echo("This is the build process")
+                sh 'mvn clean package'
             }
             
         }
 
    
-        stage("test")
-        {
-            steps{
-                echo("This is the test process")
+        post {
+            sucess {
+                archiveArtifacts artifacts : '**/target/*.war'
             }
-            
-        }
-  
-        stage("deploy")
-        {
-            steps{
-                echo("This is the deploy process")
-            }
-            
         }
     }
 }
