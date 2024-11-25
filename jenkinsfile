@@ -3,8 +3,8 @@ pipeline {
 
     stages {
         stage("build") {
-            agent any // Ensure a node is allocated for this stage
             steps {
+                checkout scm
                 sh 'mvn clean package'
             }
         }
